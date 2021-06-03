@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <script
+      src="https://kit.fontawesome.com/7c7efbb78c.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="flex jsb container">
+        <strong>Event Management</strong>
+        <div>
+          <a href="/" class="btn btn-pri">Home</a>
+          <a href="/events/" class="btn btn-pri">Event List</a>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="hero-sec sec-padding">
+        <div class="container">
+          <h1>Event Details</h1>
+        </div>
+      </section>
+      <section class="eventDetails-sec sec-padding">
+        <div class="mb-1 flex center-center container">
+          <a href="/events/<%= event.id  %>/edit" class="btn btn-pri">Edit</a>
+          <a href="/events/<%= event.id  %>/delete" class="btn btn-sec"
+            >Delete</a
+          >
+        </div>
+        <div class="eventDetails-div flex container">
+          <div class="flex-50">
+            <h2><%= event.title %></h2>
+            <p><%= event.summary %></p>
+            <div class="likes-div flex">
+              <span><%= event.likes %> </span>
+              <div>
+                <a href="/events/<%= event.id  %>/like/inc"
+                  ><i class="fas fa-thumbs-up color-pri"></i
+                ></a>
+                <a href="/events/<%= event.id  %>/like/dec"
+                  ><i class="fas fa-thumbs-down color-sec"></i
+                ></a>
+              </div>
+            </div>
+            <div class="categories-div flex">
+              <% event.event_category.forEach((ele)=>{ %>
+              <a href="#" class="btn btn-ter"><%= ele %> </a>
+
+              <% }) %>
+            </div>
+          </div>
+          <div class="flex-50 right">
+            <h2>Hosted By :- <span><%= event.host %></span></h2>
+            <h3>At:- <span><%= event.location %></span></h3>
+            <h5>Starts on :- <span> <%= event.start_date %></span></h5>
+            <h5>Ends on :- <span> <%= event.end_date %></span></h5>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
