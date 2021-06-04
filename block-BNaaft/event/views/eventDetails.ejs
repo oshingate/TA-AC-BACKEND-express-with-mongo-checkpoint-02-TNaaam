@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <script
+      src="https://kit.fontawesome.com/7c7efbb78c.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="flex jsb container">
+        <strong>Event Management</strong>
+        <div>
+          <a href="/" class="btn btn-pri">Home</a>
+          <a href="/events/" class="btn btn-pri">Event List</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-75">
+      <section class="hero-sec sec-padding">
+        <div class="container">
+          <h1>Event Details</h1>
+        </div>
+      </section>
+      <section class="eventDetails-sec sec-padding">
+        <div class="mb-1 flex center-center container">
+          <a href="/events/<%= event.id  %>/edit" class="btn btn-pri">Edit</a>
+          <a href="/events/<%= event.id  %>/delete" class="btn btn-sec"
+            >Delete</a
+          >
+        </div>
+        <div class="eventDetails-div flex container">
+          <div class="flex-50">
+            <h2><%= event.title %></h2>
+            <p><%= event.summary %></p>
+            <div class="likes-div flex">
+              <span><%= event.likes %> </span>
+              <div>
+                <a href="/events/<%= event.id  %>/like/inc"
+                  ><i class="fas fa-thumbs-up color-pri"></i
+                ></a>
+                <a href="/events/<%= event.id  %>/like/dec"
+                  ><i class="fas fa-thumbs-down color-sec"></i
+                ></a>
+              </div>
+            </div>
+            <div class="categories-div flex">
+              <% event.event_category.forEach((ele)=>{ %>
+              <a href="#" class="btn btn-ter"><%= ele %> </a>
+
+              <% }) %>
+            </div>
+          </div>
+          <div class="flex-50 right">
+            <h4>Hosted By :- <span><%= event.host %></span></h4>
+            <h5>At:- <span><%= event.location %></span></h5>
+            <h6>Starts on :- <span> <%= event.start_date %></span></h6>
+            <h6>Ends on :- <span> <%= event.end_date %></span></h6>
+          </div>
+        </div>
+      </section>
+      <hr class="hr" />
+      <section class="commentForm-sec sec-padding">
+        <div class="container">
+          <form action="/events/<%= event.id  %>/remarks/new" method="POST">
+            <fieldset>
+              <label for="title">Enter remarks.</label>
+              <input type="text" placeholder="Enter remark" name="title" />
+              <span></span>
+            </fieldset>
+            <fieldset>
+              <label for="author">Enter Author name.</label>
+              <input type="text" placeholder="Enter author" name="author" />
+              <span></span>
+            </fieldset>
+            <a href="#"><button class="btn btn-pri">Submit</button></a>
+          </form>
+        </div>
+      </section>
+
+      <section class="remarksList-sec sec-padiing">
+        <div class="remarkList-container container">
+          <% event.remarks.forEach(ele=>{ %>
+          <article class="remark-div flex jsb">
+            <div class="left">
+              <h3><%= ele.title %></h3>
+              <span>By:-<%= ele.author %> </span>
+              <h6>Likes:- <%= ele.likes %></h6>
+            </div>
+            <div class="right">
+              <div class="">
+                <a href="/remarks/<%= ele.id  %>/likes/inc"
+                  ><i class="fas fa-thumbs-up color-pri"></i
+                ></a>
+                <a href="/remarks/<%= ele.id  %>/likes/dec"
+                  ><i class="fas fa-thumbs-down color-sec"></i
+                ></a>
+              </div>
+              <div>
+                <a href="/remarks/<%= ele.id  %>/edit" class="btn btn-pri"
+                  >Edit</a
+                >
+                <a href="/remarks/<%= ele.id  %>/delete" class="btn btn-sec"
+                  >Delete</a
+                >
+              </div>
+            </div>
+          </article>
+
+          <% }) %>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

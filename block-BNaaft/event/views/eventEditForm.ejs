@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="flex jsb container">
+        <strong>Event Management</strong>
+        <div>
+          <a href="/" class="btn btn-pri">Home</a>
+          <a href="/events/new" class="btn btn-pri">Create new Event</a>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="hero-sec sec-padding">
+        <div class="container">
+          <h1>Edit Event</h1>
+        </div>
+      </section>
+      <section class="sec-padding eventCreate-sec">
+        <div class="container">
+          <form action="/events/<%= event.id  %>/edit" method="POST">
+            <fieldset>
+              <label for="title">Enter Title</label>
+              <input
+                type="text"
+                placeholder="Enter Title"
+                name="title"
+                value="<%= event.title  %> "
+              />
+              <span></span>
+            </fieldset>
+
+            <fieldset>
+              <label for="summary">Enter Summery</label>
+              <textarea name="summary" id="summery" cols="30" rows="5">
+<%= event.summary  %></textarea
+              >
+              <span></span>
+            </fieldset>
+
+            <fieldset>
+              <label for="host">Host Name</label>
+              <input
+                type="text"
+                placeholder="Enter Host"
+                name="host"
+                value="<%= event.host  %> "
+              />
+              <span></span>
+            </fieldset>
+
+            <fieldset>
+              <label for="category">Enter category</label>
+
+              <input type="text" placeholder="Enter category" name="category"
+              value="<%= event.event_category.join(",") %> " />
+              <span></span>
+            </fieldset>
+
+            <fieldset>
+              <label for="location">Enter location</label>
+
+              <input
+                type="text"
+                placeholder="Enter location"
+                name="location"
+                value="<%= event.location  %> "
+              />
+              <span></span>
+            </fieldset>
+
+            <a href="#"
+              ><button class="btn btn-pri" type="submit">Submit</button></a
+            >
+          </form>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
