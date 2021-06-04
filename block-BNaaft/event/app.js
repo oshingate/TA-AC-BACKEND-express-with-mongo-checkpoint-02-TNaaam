@@ -9,6 +9,7 @@ var sassMiddleware = require('node-sass-middleware');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var eventsRouter = require('./routes/events');
+var remarksRouter = require('./routes/remarks');
 
 //database
 
@@ -43,6 +44,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/events', eventsRouter);
+app.use('/remarks', remarksRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

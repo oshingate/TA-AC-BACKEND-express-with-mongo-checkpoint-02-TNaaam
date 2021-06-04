@@ -1,14 +1,58 @@
 var express = require('express');
 var Event = require('../models/event');
 var Remark = require('../models/remark');
+let _ = require('lodash');
+let url = require('url');
+let qs = require('querystring');
 var router = express.Router();
+
+function handleDefaultData() {
+  Event.find({ event_category: queryObj.name }, (err, events) => {
+    if (err) return next(err);
+    Event.find({}, (err, dummy) => {
+      if (err) return next(err);
+
+      //arr for array of categories
+
+      let arr = dummy.map((ele) => {
+        return ele.event_category;
+      });
+      arr = _.flattenDeep(arr);
+      arr = _.uniq(arr);
+
+      // arrLocations for array of locations
+
+      let arrLocations = dummy.map((ele) => {
+        return ele.location.trim();
+      });
+      arrLocations = _.flattenDeep(arrLocations);
+      arrLocations = _.uniq(arrLocations);
+
+      res.render('eventList', { events, arr, arrLocations });
+    });
+  });
+}
 
 /* GET event listing. */
 router.get('/', function (req, res, next) {
   Event.find({}, (err, events) => {
     if (err) return next(err);
+    //arr for array of categories
 
-    res.render('eventList', { events });
+    let arr = events.map((ele) => {
+      return ele.event_category;
+    });
+    arr = _.flattenDeep(arr);
+    arr = _.uniq(arr);
+    // arrLocations for array of locations
+
+    let arrLocations = events.map((ele) => {
+      return ele.location.trim();
+    });
+    arrLocations = _.flattenDeep(arrLocations);
+    arrLocations = _.uniq(arrLocations);
+
+    res.render('eventList', { events, arr, arrLocations });
   });
 });
 
@@ -34,11 +78,12 @@ router.post('/new', (req, res, next) => {
 
 router.get('/:id', (req, res, next) => {
   let eventId = req.params.id;
-  Event.findById(eventId, (err, event) => {
-    if (err) return next(err);
-    res.render('eventDetails', { event });
-    // res.json(event);
-  });
+  Event.findById(eventId)
+    .populate('remarks')
+    .exec((err, event) => {
+      if (err) return next(err);
+      res.render('eventDetails', { event });
+    });
 });
 
 //edit event
@@ -97,6 +142,72 @@ router.get('/:id/like/dec', (req, res, next) => {
     if (err) return next(err);
     res.redirect('/events/' + eventId);
   });
+});
+
+//remark create
+
+router.post('/:id/remarks/new', (req, res, next) => {
+  let eventId = req.params.id;
+  let data = req.body;
+  data.eventId = eventId;
+  Remark.create(data, (err, remark) => {
+    if (err) return next(err);
+    Event.findByIdAndUpdate(
+      eventId,
+      { $push: { remarks: remark.id } },
+      (err, event) => {
+        if (err) return next(err);
+        res.redirect('/events/' + eventId);
+      }
+    );
+  });
+});
+
+//sorting by tags
+
+router.get('/sort/tags', (req, res, next) => {
+  let parsedUrl = url.parse(req.url);
+  let queryObj = qs.parse(parsedUrl.query);
+  console.log(queryObj.name);
+
+  handleDefaultData();
+});
+
+//sorting by locations
+
+router.get('/sort/location', (req, res, next) => {
+  let parsedUrl = url.parse(req.url);
+  let queryObj = qs.parse(parsedUrl.query);
+  console.log(queryObj.name);
+
+  handleDefaultData();
+});
+
+//sorting by date
+
+router.get('/sort/date/:type', (req, res, next) => {
+  let type = req.params.type;
+  //for sorting in accending order
+  if (type === 'acc') {
+    Event.find({})
+      .sort({ start_date: 1 })
+      .exec((err, events) => {
+        if (err) return next(err);
+
+        handleDefaultData();
+      });
+  } else if (type === 'dec') {
+    //for sorting in secending order
+    Event.find({})
+      .sort({ start_date: -1 })
+      .exec((err, events) => {
+        if (err) return next(err);
+
+        handleDefaultData();
+      });
+  } else {
+    next();
+  }
 });
 
 module.exports = router;

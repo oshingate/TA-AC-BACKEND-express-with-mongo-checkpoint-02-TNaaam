@@ -150,9 +150,21 @@ select {
 .flex {
   display: flex; }
 
+.flex-vertical {
+  flex-direction: column; }
+
 .flex-50 {
   flex: 0 1 48%;
   margin: 1%; }
+
+.flex-45 {
+  margin: 1%; }
+
+.flex-25 {
+  flex: 0 1 25%; }
+
+.flex-75 {
+  flex: 0 1 75%; }
 
 .jsb {
   justify-content: space-between; }
@@ -183,8 +195,11 @@ select {
   padding: 3rem 0; }
 
 .container {
-  max-width: 1000px;
+  max-width: 800px;
   margin: 0 auto; }
+
+.tac {
+  text-align: center; }
 
 h1 {
   font-size: 2.8rem;
@@ -279,5 +294,39 @@ header {
 
 .eventDetails-div .categories-div a {
   margin: 0 0.5rem; }
+
+.commentForm-sec form {
+  border: 1px solid gray;
+  padding: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: wheat; }
+
+.remarkList-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem; }
+  .remarkList-container .remark-div {
+    margin: 0.5rem 0;
+    border-bottom: 1px solid gray;
+    padding: 1rem; }
+    .remarkList-container .remark-div .left > * {
+      padding: 0.5rem 0; }
+    .remarkList-container .remark-div .right i {
+      margin-right: 1rem; }
+    .remarkList-container .remark-div .right > * {
+      margin-bottom: 2rem; }
+
+aside {
+  border: 1px solid black;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #5e9296; }
+  aside h4 {
+    text-align: center;
+    padding: 2rem 0; }
+  aside .allTags-div {
+    flex-wrap: wrap;
+    padding: 1rem; }
 
 /*# sourceMappingURL=style.css.map */
