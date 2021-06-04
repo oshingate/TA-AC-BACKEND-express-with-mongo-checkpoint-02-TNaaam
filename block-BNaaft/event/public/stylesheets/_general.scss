@@ -1,14 +1,16 @@
 body {
   font-size: 20px;
-  background-color: aquamarine;
+  background-color: #fbeaff;
+  font-family: 'Noto Sans JP', sans-serif;
 }
 a {
   display: inline-block;
   text-decoration: none;
   color: black;
 }
-$pri: rgb(49, 160, 91);
-$sec: rgb(155, 53, 70);
+$pri: #00a676;
+$sec: #ef476f;
+$ter: #565254;
 input,
 textarea,
 select {
@@ -18,6 +20,9 @@ select {
   padding: 0.5rem 0;
   &::placeholder {
     padding-left: 1rem;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
   }
 }
 .flex {
@@ -53,6 +58,7 @@ select {
 .btn {
   padding: 0.5rem 1rem;
   border-radius: 10px;
+  outline: none;
 }
 .btn-pri {
   background-color: $pri;
@@ -63,8 +69,8 @@ select {
   color: white;
 }
 .btn-ter {
-  background-color: rgb(94, 92, 92);
-  color: white;
+  background-color: $ter;
+  color: rgb(240, 219, 168);
 }
 .sec-padding {
   padding: 3rem 0;
@@ -119,12 +125,17 @@ p {
 //header
 
 header {
-  background-color: rgb(24, 25, 68);
+  // background: linear-gradient(to right top, #2f195fa1, #7453ba79);
+  background: linear-gradient(to right top, #00d2fc, #009efa);
   padding: 2rem 0;
   strong {
     font-size: 2rem;
     font-weight: 800;
-    color: goldenrod;
+    color: rgb(233, 105, 20);
+    text-shadow: 2px 2px goldenrod;
+  }
+  .container {
+    max-width: 1200px;
   }
 }
 //hero-sec
@@ -150,7 +161,9 @@ header {
   form {
     max-width: 40%;
     margin: 0 auto;
-    background-color: rgba(192, 116, 116, 0.548);
+    background-color: #b39cd0;
+    border-radius: 10px;
+    box-shadow: 4px 4px 4px rgb(148, 147, 147);
     padding: 2rem;
   }
 }
@@ -159,9 +172,10 @@ header {
   max-width: 60%;
   margin: 0 auto;
   padding: 2rem;
-  border: 1px solid black;
+  border-radius: 10px;
   box-shadow: 4px 4px 4px gray;
   margin-bottom: 1rem;
+  background-color: #b39cd0;
 }
 
 //eventDetails-sec
@@ -198,21 +212,25 @@ header {
 
 .commentForm-sec {
   form {
-    border: 1px solid gray;
+    border-radius: 10px;
+    box-shadow: 4px 4px 4px rgb(148, 147, 147);
     padding: 1rem;
     max-width: 500px;
     margin: 0 auto;
-    background-color: wheat;
+    background-color: #b39cd0;
   }
 }
 .remarkList-container {
-  max-width: 600px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 1rem;
   .remark-div {
     margin: 0.5rem 0;
-    border-bottom: 1px solid gray;
+    border-radius: 10px;
+    box-shadow: 4px 4px 2px rgb(175, 173, 173);
+    // border-bottom: 1px solid gray;
     padding: 1rem;
+    background-color: #f3c5ff;
     .left > * {
       padding: 0.5rem 0;
     }
@@ -229,10 +247,9 @@ header {
 
 //aside bar
 aside {
-  border: 1px solid black;
   min-height: 100vh;
   width: 100%;
-  background-color: #5e9296;
+  background-color: #acd2ed;
   h4 {
     text-align: center;
     padding: 2rem 0;

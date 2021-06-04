@@ -128,7 +128,8 @@ table {
 
 body {
   font-size: 20px;
-  background-color: aquamarine; }
+  background-color: #fbeaff;
+  font-family: 'Noto Sans JP', sans-serif; }
 
 a {
   display: inline-block;
@@ -145,7 +146,10 @@ select {
   input::placeholder,
   textarea::placeholder,
   select::placeholder {
-    padding-left: 1rem; }
+    padding-left: 1rem;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 600;
+    font-size: 1rem; }
 
 .flex {
   display: flex; }
@@ -177,19 +181,20 @@ select {
 
 .btn {
   padding: 0.5rem 1rem;
-  border-radius: 10px; }
+  border-radius: 10px;
+  outline: none; }
 
 .btn-pri {
-  background-color: #31a05b;
+  background-color: #00a676;
   color: white; }
 
 .btn-sec {
-  background-color: #9b3546;
+  background-color: #ef476f;
   color: white; }
 
 .btn-ter {
-  background-color: #5e5c5c;
-  color: white; }
+  background-color: #565254;
+  color: #f0dba8; }
 
 .sec-padding {
   padding: 3rem 0; }
@@ -236,18 +241,21 @@ p {
   margin-bottom: 1rem; }
 
 .color-pri {
-  color: #31a05b; }
+  color: #00a676; }
 
 .color-sec {
-  color: #9b3546; }
+  color: #ef476f; }
 
 header {
-  background-color: #181944;
+  background: linear-gradient(to right top, #00d2fc, #009efa);
   padding: 2rem 0; }
   header strong {
     font-size: 2rem;
     font-weight: 800;
-    color: goldenrod; }
+    color: #e96914;
+    text-shadow: 2px 2px goldenrod; }
+  header .container {
+    max-width: 1200px; }
 
 .hero-sec h1 {
   text-align: center; }
@@ -263,16 +271,19 @@ header {
 .eventCreate-sec form {
   max-width: 40%;
   margin: 0 auto;
-  background-color: rgba(192, 116, 116, 0.548);
+  background-color: #b39cd0;
+  border-radius: 10px;
+  box-shadow: 4px 4px 4px #949393;
   padding: 2rem; }
 
 .event-div {
   max-width: 60%;
   margin: 0 auto;
   padding: 2rem;
-  border: 1px solid black;
+  border-radius: 10px;
   box-shadow: 4px 4px 4px gray;
-  margin-bottom: 1rem; }
+  margin-bottom: 1rem;
+  background-color: #b39cd0; }
 
 .eventDetails-div .flex-50 > * {
   margin-bottom: 1rem; }
@@ -296,20 +307,23 @@ header {
   margin: 0 0.5rem; }
 
 .commentForm-sec form {
-  border: 1px solid gray;
+  border-radius: 10px;
+  box-shadow: 4px 4px 4px #949393;
   padding: 1rem;
   max-width: 500px;
   margin: 0 auto;
-  background-color: wheat; }
+  background-color: #b39cd0; }
 
 .remarkList-container {
-  max-width: 600px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 1rem; }
   .remarkList-container .remark-div {
     margin: 0.5rem 0;
-    border-bottom: 1px solid gray;
-    padding: 1rem; }
+    border-radius: 10px;
+    box-shadow: 4px 4px 2px #afadad;
+    padding: 1rem;
+    background-color: #f3c5ff; }
     .remarkList-container .remark-div .left > * {
       padding: 0.5rem 0; }
     .remarkList-container .remark-div .right i {
@@ -318,10 +332,9 @@ header {
       margin-bottom: 2rem; }
 
 aside {
-  border: 1px solid black;
   min-height: 100vh;
   width: 100%;
-  background-color: #5e9296; }
+  background-color: #acd2ed; }
   aside h4 {
     text-align: center;
     padding: 2rem 0; }

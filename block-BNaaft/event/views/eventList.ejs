@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
@@ -24,7 +29,7 @@
           <a href="/events/" class="btn btn-sec">Reset</a>
         </div>
         <hr />
-        <h5 class="tac">Tags</h5>
+        <h5 class="tac">Categories</h5>
         <div class="allTags-div flex">
           <% arr.forEach(tag=>{ %>
           <a
@@ -49,10 +54,10 @@
         <h5 class="tac">By Date</h5>
         <div class="allTags-div flex">
           <a href="/events/sort/date/acc" class="btn btn-ter flex-45"
-            >Accending
+            >Ascending
           </a>
           <a href="/events/sort/date/dec" class="btn btn-ter flex-45"
-            >Decending
+            >Descending
           </a>
         </div>
       </aside>
@@ -67,12 +72,10 @@
             <% if(events){ %> <% events.forEach(ele=>{ %>
             <div class="event-div flex jsb">
               <div>
-                <h3><%= ele.title %></h3>
+                <h4><%= ele.title %></h4>
               </div>
               <div>
-                <a href="/events/<%= ele._id %>" class="btn btn-pri"
-                  >Get more Details</a
-                >
+                <a href="/events/<%= ele._id %>" class="btn btn-pri">Details</a>
               </div>
             </div>
             <% }) %> <% } %> <% if(events.length===0){ %>

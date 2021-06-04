@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <script
       src="https://kit.fontawesome.com/7c7efbb78c.js"
       crossorigin="anonymous"
@@ -58,10 +60,10 @@
             </div>
           </div>
           <div class="flex-50 right">
-            <h2>Hosted By :- <span><%= event.host %></span></h2>
-            <h3>At:- <span><%= event.location %></span></h3>
-            <h5>Starts on :- <span> <%= event.start_date %></span></h5>
-            <h5>Ends on :- <span> <%= event.end_date %></span></h5>
+            <h4>Hosted By :- <span><%= event.host %></span></h4>
+            <h5>At:- <span><%= event.location %></span></h5>
+            <h6>Starts on :- <span> <%= event.start_date %></span></h6>
+            <h6>Ends on :- <span> <%= event.end_date %></span></h6>
           </div>
         </div>
       </section>
