@@ -17,34 +17,74 @@
         </div>
       </div>
     </header>
-    <main>
-      <section class="hero-sec sec-padding">
-        <div class="container">
-          <h1>List of Events</h1>
+    <div class="flex">
+      <aside class="flex-25">
+        <h4>Search by:-</h4>
+        <div class="flex center-center">
+          <a href="/events/" class="btn btn-sec">Reset</a>
         </div>
-      </section>
-      <section class="sec-padding eventList-sec">
-        <div class="container eventList-div">
-          <% if(events){ %> <% events.forEach(ele=>{ %>
-          <div class="event-div flex jsb">
-            <div>
-              <h3><%= ele.title %></h3>
-            </div>
-            <div>
-              <a href="/events/<%= ele._id %>" class="btn btn-pri"
-                >Get more Details</a
-              >
-            </div>
-          </div>
-          <% }) %> <% } %> <% if(events.length===0){ %>
-          <div class="text-center">
-            <h3 class="mb-1">Currently no event found</h3>
-            <h4 class="mb-1">Create new</h4>
-            <a class="btn btn-pri mb-1" href="/events/new">Create Event</a>
-          </div>
-          <% } %>
+        <hr />
+        <h5 class="tac">Tags</h5>
+        <div class="allTags-div flex">
+          <% arr.forEach(tag=>{ %>
+          <a
+            href="/events/sort/tags?name=<%= tag  %> "
+            class="btn btn-ter flex-45"
+            ><%= tag %>
+          </a>
+          <% }) %>
         </div>
-      </section>
-    </main>
+        <hr />
+        <h5 class="tac">Locations</h5>
+        <div class="allTags-div flex">
+          <% arrLocations.forEach(tag=>{ %>
+          <a
+            href="/events/sort/location?name=<%= tag  %> "
+            class="btn btn-ter flex-45"
+            ><%= tag %>
+          </a>
+          <% }) %>
+        </div>
+        <hr />
+        <h5 class="tac">By Date</h5>
+        <div class="allTags-div flex">
+          <a href="/events/sort/date/acc" class="btn btn-ter flex-45"
+            >Accending
+          </a>
+          <a href="/events/sort/date/dec" class="btn btn-ter flex-45"
+            >Decending
+          </a>
+        </div>
+      </aside>
+      <main class="flex-75">
+        <section class="hero-sec sec-padding">
+          <div class="container">
+            <h1>List of Events</h1>
+          </div>
+        </section>
+        <section class="sec-padding eventList-sec">
+          <div class="containers eventList-div">
+            <% if(events){ %> <% events.forEach(ele=>{ %>
+            <div class="event-div flex jsb">
+              <div>
+                <h3><%= ele.title %></h3>
+              </div>
+              <div>
+                <a href="/events/<%= ele._id %>" class="btn btn-pri"
+                  >Get more Details</a
+                >
+              </div>
+            </div>
+            <% }) %> <% } %> <% if(events.length===0){ %>
+            <div class="text-center">
+              <h3 class="mb-1">Currently no event found</h3>
+              <h4 class="mb-1">Create new</h4>
+              <a class="btn btn-pri mb-1" href="/events/new">Create Event</a>
+            </div>
+            <% } %>
+          </div>
+        </section>
+      </main>
+    </div>
   </body>
 </html>
